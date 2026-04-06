@@ -2,271 +2,215 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>نوفا تك - حلول تقنية متطورة</title>
+  <title>عسل صحي طبيعي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    /* تعريف متغيرات الألوان للوضعين */
-    :root {
-      --bg-body: #f0f4f8;
-      --bg-card: #ffffff;
-      --text-main: #1e293b;
-      --text-sub: #475569;
-      --primary: #00d2ff; /* أزرق براق */
-      --secondary: #3a7bd5;
-      --accent: #ff007a; /* وردي نيون للتمييز */
-      --nav-bg: #0f172a;
-    }
-
-    [data-theme="dark"] {
-      --bg-body: #0b0f1a;
-      --bg-card: #161e2d;
-      --text-main: #f1f5f9;
-      --text-sub: #94a3b8;
-      --primary: #00f2fe;
-      --secondary: #4facfe;
-      --nav-bg: #050810;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-
     body {
-      background: var(--bg-body);
-      color: var(--text-main);
-      line-height: 1.6;
+      margin: 0;
+      font-family: "Cairo", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fffaf2;
+      color: #2b2b2b;
     }
-
-    /* Navbar */
-    nav {
-      background: var(--nav-bg);
-      color: white;
-      padding: 1rem 5%;
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 1rem 2rem;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       position: sticky;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      z-index: 10;
     }
-    nav .logo {
-      font-size: 1.6rem;
-      font-weight: 900;
-      background: linear-gradient(to left, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
+    .logo {
+      font-weight: 700;
+      color: #c58b1b;
+      font-size: 1.3rem;
     }
     nav a {
-      color: #e2e8f0;
+      margin-left: 1rem;
       text-decoration: none;
-      font-weight: 500;
+      color: #444;
+      font-size: 0.95rem;
     }
-    nav a:hover { color: var(--primary); }
-
-    /* Theme Toggle Button */
-    .theme-toggle {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid var(--primary);
-      color: var(--primary);
-      padding: 5px 12px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.8rem;
-    }
-
-    /* Hero Section */
     .hero {
-      background: linear-gradient(135deg, #050810 0%, #1e3a8a 100%);
-      color: white;
-      text-align: center;
-      padding: 8rem 5% 6rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: radial-gradient(circle, rgba(0,210,255,0.1) 0%, transparent 70%);
-    }
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 20px rgba(0,210,255,0.5);
-    }
-    .hero p {
-      font-size: 1.3rem;
-      color: #cbd5e1;
-      max-width: 700px;
-      margin: 0 auto 2.5rem;
-    }
-
-    .btn {
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 1rem 2.5rem;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.4s;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 4px 15px rgba(0,210,255,0.3);
-    }
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px var(--primary);
-    }
-
-    /* Services Cards */
-    .section { padding: 5rem 5%; max-width: 1200px; margin: auto; }
-    .section h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 3.5rem;
-      position: relative;
-    }
-    .section h2::after {
-      content: '';
-      display: block;
-      width: 60px; height: 4px;
-      background: var(--accent);
-      margin: 10px auto;
-      border-radius: 2px;
-    }
-
-    .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
+      gap: 2rem;
+      padding: 3rem 2rem;
+      align-items: center;
     }
-    .card {
-      background: var(--bg-card);
-      padding: 2.5rem;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.05);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      position: relative;
-    }
-    .card:hover {
-      transform: translateY(-10px);
-      border-color: var(--primary);
-    }
-    .card h3 {
+    .hero-text h1 {
+      font-size: 2.4rem;
       margin-bottom: 1rem;
-      color: var(--primary);
-      font-size: 1.5rem;
+      color: #c58b1b;
     }
-    .card p { color: var(--text-sub); }
-
-    /* Contact Form */
-    .contact { background: var(--bg-card); border-radius: 30px; margin-bottom: 5rem; }
-    input, textarea {
-      background: var(--bg-body);
-      color: var(--text-main);
+    .hero-text p {
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .btn-primary {
+      background: #c58b1b;
+      color: #fff;
+      border: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .hero-img img {
+      width: 100%;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      object-fit: cover;
+    }
+    .section {
+      padding: 2.5rem 2rem;
+    }
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      color: #c58b1b;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 1rem;
       padding: 1rem;
-      border: 2px solid transparent;
-      border-radius: 12px;
-      outline: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    input:focus, textarea:focus { border-color: var(--primary); }
-
+    .product-card img {
+      width: 100%;
+      border-radius: 0.8rem;
+      margin-bottom: 0.8rem;
+      height: 180px;
+      object-fit: cover;
+    }
+    .product-name {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .product-price {
+      color: #2f7a3e;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+    .product-card button {
+      align-self: flex-start;
+      background: #2f7a3e;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
     footer {
-      background: var(--nav-bg);
-      color: #94a3b8;
-      padding: 3rem;
+      padding: 1.5rem 2rem;
       text-align: center;
+      font-size: 0.85rem;
+      color: #777;
+      background: #fff;
+      margin-top: 2rem;
+      border-top: 1px solid #eee;
     }
-
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
-      nav ul { display: none; }
+      .hero {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
-<body data-theme="light">
+<body>
+  <header>
+    <div class="logo">عسل الصحة</div>
+    <nav>
+      <a href="#products">المنتجات</a>
+      <a href="#benefits">فوائد العسل</a>
+      <a href="#about">عنّا</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+  </header>
 
-  <nav>
-    <div class="logo">نوفا تك</div>
-    <ul>
-      <li><a href="#home">الرئيسية</a></li>
-      <li><a href="#services">خدماتنا</a></li>
-      <li><button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">الوضع الليلي 🌙</button></li>
-    </ul>
-  </nav>
-
-  <section class="hero" id="home">
-    <h1>نبني مستقبل أعمالك التقني</h1>
-    <p>حلول برمجية واستضافة سحابية AWS فائقة السرعة مصممة خصيصاً لتفوق توقعاتك</p>
-    <a href="#contact" class="btn">ابدأ رحلتك الآن</a>
-  </section>
-
-  <section class="section" id="services">
-    <h2>ماذا نقدم؟</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>تطوير واجهات مذهلة</h3>
-        <p>نحول أفكارك إلى واقع بصري مبهر باستخدام React و Next.js مع تجربة مستخدم لا تُنسى.</p>
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>عسل طبيعي 100% لصحة أفضل كل يوم</h1>
+        <p>
+          نقدّم لك عسلًا خامًا من خلايا نحل مختارة بعناية، غنيًا بالإنزيمات
+          والعناصر الغذائية، بدون أي إضافات صناعية.
+        </p>
+        <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+          تسوّق الآن
+        </button>
       </div>
-      <div class="card">
-        <h3>قوة السحاب AWS</h3>
-        <p>استمتع باستقرار بنسبة 99.9% مع خدمات الحوسبة السحابية المتقدمة وتحسين التكاليف.</p>
+      <div class="hero-img">
+        <img src="honey-hero.jpg" alt="عسل طبيعي صحي" />
       </div>
-      <div class="card">
-        <h3>ذكاء الأعمال</h3>
-        <p>أنظمة CRM و ERP ذكية تساعدك على اتخاذ قراراتك بناءً على بيانات دقيقة ولحظية.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section contact" id="contact">
-    <h2>تواصل معنا</h2>
-    <form onsubmit="handleSubmit(event)">
-      <input type="text" placeholder="الاسم الكامل" required>
-      <input type="email" placeholder="البريد الإلكتروني المهني" required>
-      <textarea placeholder="كيف يمكننا مساعدتك في مشروعك القادم؟" required></textarea>
-      <button type="submit" class="btn">إرسال الطلب</button>
-    </form>
-  </section>
+    <section class="section" id="products">
+      <h2 class="section-title">منتجاتنا المميزة</h2>
+      <div class="products-grid">
+        <article class="product-card">
+          <img src="honey1.jpg" alt="عسل سدر جبلي" />
+          <div class="product-name">عسل سدر جبلي</div>
+          <div class="product-price">€25 / 500 جم</div>
+          <p>عسل سدر خام من خلايا نحل في مناطق جبلية نقية، غني بمضادات الأكسدة.</p>
+          <button>إضافة إلى السلة</button>
+        </article>
+
+        <article class="product-card">
+          <img src="honey2.jpg" alt="عسل زهور برية" />
+          <div class="product-name">عسل زهور برية</div>
+          <div class="product-price">€18 / 500 جم</div>
+          <p>مزيج طبيعي من رحيق الزهور البرية، بطعم متوازن يناسب الاستخدام اليومي.</p>
+          <button>إضافة إلى السلة</button>
+        </article>
+
+        <article class="product-card">
+          <img src="honey3.jpg" alt="عسل مع حبة البركة" />
+          <div class="product-name">عسل مع حبة البركة</div>
+          <div class="product-price">€22 / 500 جم</div>
+          <p>تركيبة تجمع بين فوائد العسل وحبة البركة لدعم المناعة والطاقة.</p>
+          <button>إضافة إلى السلة</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="benefits">
+      <h2 class="section-title">فوائد العسل الصحية</h2>
+      <p>
+        العسل الطبيعي مصدر غني بمضادات الأكسدة، ويساعد في دعم المناعة، وتهدئة
+        الحلق، وتزويد الجسم بالطاقة بشكل طبيعي. عند اختيار عسل خام عالي الجودة،
+        تحصل على أقصى استفادة من الإنزيمات والفيتامينات الموجودة فيه.
+      </p>
+    </section>
+
+    <section class="section" id="about">
+      <h2 class="section-title">عنّا</h2>
+      <p>
+        نحن نؤمن أن الصحة تبدأ من الغذاء النقي. لذلك نعمل مع نحالين موثوقين
+        ونراقب جودة العسل من الخلية حتى يصل إلى مائدتك.
+      </p>
+    </section>
+
+    <section class="section" id="contact">
+      <h2 class="section-title">تواصل معنا</h2>
+      <p>للاستفسار أو الطلب عبر الواتساب: 0123 456 789</p>
+      <p>البريد الإلكتروني: info@example.com</p>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2026 نوفا تك. هندسة رقمية بأعلى المعايير.</p>
+    © 2026 عسل الصحة – جميع الحقوق محفوظة.
   </footer>
-
-  <script>
-    // وظيفة تبديل السمات
-    function toggleTheme() {
-      const body = document.body;
-      const btn = document.getElementById('themeBtn');
-      
-      if (body.getAttribute('data-theme') === 'light') {
-        body.setAttribute('data-theme', 'dark');
-        btn.innerHTML = 'الوضع النهاري ☀️';
-      } else {
-        body.setAttribute('data-theme', 'light');
-        btn.innerHTML = 'الوضع الليلي 🌙';
-      }
-    }
-
-    function handleSubmit(e) {
-      e.preventDefault();
-      alert('تم استلام رسالتك بنجاح! فريقنا التقني سيتواصل معك خلال 24 ساعة.');
-      e.target.reset();
-    }
-  </script>
 </body>
 </html>
