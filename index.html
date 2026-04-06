@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>وائل العساف | AWS Specialist</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+/* -------------------- ROOT COLORS -------------------- */
+:root {
+    --neon-blue: #00d2ff;
+    --glass-dark: rgba(255,255,255,0.08);
+    --glass-light: rgba(255,255,255,0.7);
+}
+
+/* -------------------- GLOBAL -------------------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #0a0a1f, #010b18 70%);
+    font-family: 'Segoe UI', Tahoma;
+    overflow: hidden;
+    position: relative;
+    color: white;
+    transition: 0.4s ease;
+}
+
+/* Nebula Background */
+body::before {
+    content: "";
+    position: absolute;
+    width: 180%;
+    height: 180%;
+    background: url('https://i.imgur.com/9aKQK5N.png');
+    background-size: cover;
+    opacity: 0.08;
+    animation: nebulaMove 55s infinite linear;
+    z-index: 0;
+}
+
+@keyframes nebulaMove {
+    from { transform: translate(0,0); }
+    to { transform: translate(-8%, -8%); }
+}
+
+/* Stars */
+canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+/* -------------------- CARD -------------------- */
+.card {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 400px;
+    padding: 3rem 2rem;
+    background: var(--glass-dark);
+    border-radius: 28px;
+    border: 1px solid rgba(0,210,255,0.25);
+    backdrop-filter: blur(22px);
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+/* Theme Button */
+.theme-toggle {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+}
+
+.toggle-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Profile */
+.profile-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 3px solid var(--neon-blue);
+    padding: 5px;
+    background: #010b18;
+    object-fit: cover;
+    box-shadow: 0 0 30px rgba(0,210,255,0.3);
+    margin-bottom: 15px;
+}
+
+/* Name */
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+    background: linear-gradient(90deg, #fff, var(--neon-blue), #fff);
+    background-size: 200%;
+    animation: shine 4s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes shine {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+}
+
+.tagline {
+    font-size: 1rem;
+    color: var(--neon-blue);
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+/* Date & Time */
+.datetime-container {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+#clock {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--neon-blue);
+}
+
+#date {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* Weather */
+.weather-box {
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* -------------------- SOCIAL LINKS -------------------- */
+.social-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-link i {
+    font-size: 1.4rem;
+    width: 30px;
+}
+
+.social-link span {
+    flex-grow: 1;
+    text-align: right;
+    margin-right: 15px;
+    font-weight: 500;
+}
+
+.social-link:hover {
+    background: rgba(0,210,255,0.15);
+    border-color: var(--neon-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,210,255,0.2);
+}
+
+/* Light Mode */
+body.light-mode { background: #f0f4f8; color: #222; }
+body.light-mode::before { opacity: 0.03; }
+body.light-mode .card { background: white; border-color: #ddd; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+body.light-mode h1 { background: linear-gradient(90deg, #111, #0077b6, #111); -webkit-background-clip: text; }
+body.light-mode .social-link { background: #f8f9fa; border-color: #eee; color: #333; }
+body.light-mode .social-link:hover { background: #e9ecef; }
+</style>
+</head>
+
+<body>
+
+<canvas id="starField"></canvas>
+
+<div class="card">
+    <div class="theme-toggle">
+        <div class="toggle-btn" id="themeBtn">🌙</div>
+    </div>
+
+    <img src="profile.jpg" class="profile-img" alt="وائل العساف">
+
+    <h1>وائل العساف</h1>
+    <span class="tagline">AWS Cloud Specialist</span>
+
+    <div class="datetime-container">
+        <div id="clock"></div>
+        <div id="date"></div>
+    </div>
+
+    <div class="weather-box" id="weatherBox">
+        <i class="fas fa-spinner fa-spin"></i> جاري تحميل الطقس...
+    </div>
+
+    <!-- روابط التواصل الاجتماعي -->
+    <div class="social-list">
+        <a href="https://linkedin.com/in/YOUR_USERNAME" target="_blank" class="social-link">
+            <i class="fab fa-linkedin" style="color: #0077b6;"></i>
+            <span>لينكد إن</span>
+            <i class="fas fa-chevron-left" style="font-size: 0.8rem; opacity: 0.5;"></i>
+        </a>
+        
+        <a href="https://github.com/YOUR_USERNAME" target="_blank" class="social-link">
+            <i class="fab fa-github"></i>
+            <span>جيت هاب</span>
+            <i class="fas fa-chevron-left" style="font-size: 0.8rem; opacity: 0.5;"></i>
+        </a>
+
+        <a href="https://instagram.com/YOUR_USERNAME" target="_blank" class="social-link">
+            <i class="fab fa-instagram" style="color: #e4405f;"></i>
+            <span>إنستغرام</span>
+            <i class="fas fa-chevron-left" style="font-size: 0.8rem; opacity: 0.5;"></i>
+        </a>
+
+        <a href="mailto:your-email@example.com" class="social-link">
+            <i class="fas fa-envelope" style="color: #00d2ff;"></i>
+            <span>البريد الإلكتروني</span>
+            <i class="fas fa-chevron-left" style="font-size: 0.8rem; opacity: 0.5;"></i>
+        </a>
+    </div>
+</div>
+
+<script>
+/* -------------------- STARS ANIMATION -------------------- */
+const canvas = document.getElementById('starField');
+const ctx = canvas.getContext('2d');
+let stars = [];
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+class Star {
+    constructor() { this.reset(); }
+    reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 1.5;
+        this.speed = Math.random() * 0.5 + 0.1;
+    }
+    update() {
+        this.y += this.speed;
+        if (this.y > canvas.height) this.reset();
+    }
+    draw() {
+        ctx.fillStyle = "rgba(255,255,255,0.8)";
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+function initStars() {
+    stars = [];
+    for(let i = 0; i < 80; i++) stars.push(new Star());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    stars.forEach(s => { s.update(); s.draw(); });
+    requestAnimationFrame(animate);
+}
+
+/* -------------------- DATE & TIME -------------------- */
+function updateDateTime() {
+    const now = new Date();
+    document.getElementById("clock").textContent = now.toLocaleTimeString("ar-SA", {hour12: true});
+    document.getElementById("date").textContent = now.toLocaleDateString("ar-SA", {weekday: "long", year: "numeric", month: "long", day: "numeric"});
+}
+
+/* -------------------- WEATHER -------------------- */
+async function loadWeather() {
+    const box = document.getElementById("weatherBox");
+    try {
+        const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=24.71&longitude=46.67&current_weather=true");
+        const data = await res.json();
+        const temp = Math.round(data.current_weather.temperature);
+        box.innerHTML = `<i class="fas fa-thermometer-half"></i> درجة الحرارة في الرياض: ${temp}° مئوية`;
+    } catch (e) {
+        box.innerHTML = "الطقس غير متاح حالياً";
+    }
+}
+
+/* -------------------- THEME TOGGLE -------------------- */
+const themeBtn = document.getElementById("themeBtn");
+themeBtn.onclick = () => {
+    document.body.classList.toggle("light-mode");
+    themeBtn.textContent = document.body.classList.contains("light-mode") ? "☀️" : "🌙";
+};
+
+/* -------------------- INIT -------------------- */
+window.onresize = resize;
+resize(); 
+initStars(); 
+animate();
+setInterval(updateDateTime, 1000); 
+updateDateTime();
+loadWeather();
+</script>
+
+</body>
+</html>
