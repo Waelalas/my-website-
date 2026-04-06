@@ -3,24 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>نوفا تك - حلول تقنية</title>
+  <title>نوفا تك - حلول تقنية متطورة</title>
   <style>
+    /* تعريف متغيرات الألوان للوضعين */
+    :root {
+      --bg-body: #f0f4f8;
+      --bg-card: #ffffff;
+      --text-main: #1e293b;
+      --text-sub: #475569;
+      --primary: #00d2ff; /* أزرق براق */
+      --secondary: #3a7bd5;
+      --accent: #ff007a; /* وردي نيون للتمييز */
+      --nav-bg: #0f172a;
+    }
+
+    [data-theme="dark"] {
+      --bg-body: #0b0f1a;
+      --bg-card: #161e2d;
+      --text-main: #f1f5f9;
+      --text-sub: #94a3b8;
+      --primary: #00f2fe;
+      --secondary: #4facfe;
+      --nav-bg: #050810;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     body {
-      background: #f8fafc;
-      color: #1e293b;
+      background: var(--bg-body);
+      color: var(--text-main);
       line-height: 1.6;
     }
 
     /* Navbar */
     nav {
-      background: #0f172a;
+      background: var(--nav-bg);
       color: white;
       padding: 1rem 5%;
       display: flex;
@@ -29,183 +52,219 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
     nav .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #38bdf8;
+      font-size: 1.6rem;
+      font-weight: 900;
+      background: linear-gradient(to left, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     nav ul {
       list-style: none;
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
+      align-items: center;
     }
     nav a {
-      color: white;
+      color: #e2e8f0;
       text-decoration: none;
-      transition: 0.3s;
+      font-weight: 500;
     }
-    nav a:hover {
-      color: #38bdf8;
+    nav a:hover { color: var(--primary); }
+
+    /* Theme Toggle Button */
+    .theme-toggle {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 5px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.8rem;
     }
 
-    /* Hero */
+    /* Hero Section */
     .hero {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      background: linear-gradient(135deg, #050810 0%, #1e3a8a 100%);
       color: white;
       text-align: center;
-      padding: 6rem 5% 5rem;
+      padding: 8rem 5% 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(0,210,255,0.1) 0%, transparent 70%);
     }
     .hero h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       margin-bottom: 1rem;
+      text-shadow: 0 0 20px rgba(0,210,255,0.5);
     }
     .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+      font-size: 1.3rem;
       color: #cbd5e1;
-    }
-    .btn {
-      background: #38bdf8;
-      color: #0f172a;
-      padding: 0.8rem 2rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn:hover {
-      background: #0ea5e9;
-      transform: translateY(-2px);
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
     }
 
-    /* Services */
-    .section {
-      padding: 4rem 5%;
-      max-width: 1200px;
-      margin: auto;
+    .btn {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.4s;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(0,210,255,0.3);
     }
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px var(--primary);
+    }
+
+    /* Services Cards */
+    .section { padding: 5rem 5%; max-width: 1200px; margin: auto; }
     .section h2 {
       text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 3rem;
-      color: #0f172a;
+      font-size: 2.5rem;
+      margin-bottom: 3.5rem;
+      position: relative;
     }
+    .section h2::after {
+      content: '';
+      display: block;
+      width: 60px; height: 4px;
+      background: var(--accent);
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
     }
     .card {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: 0.3s;
+      background: var(--bg-card);
+      padding: 2.5rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      position: relative;
     }
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      transform: translateY(-10px);
+      border-color: var(--primary);
     }
     .card h3 {
       margin-bottom: 1rem;
-      color: #0ea5e9;
+      color: var(--primary);
+      font-size: 1.5rem;
     }
+    .card p { color: var(--text-sub); }
 
-    /* Contact */
-    .contact {
-      background: #e2e8f0;
-    }
-    form {
-      max-width: 600px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+    /* Contact Form */
+    .contact { background: var(--bg-card); border-radius: 30px; margin-bottom: 5rem; }
     input, textarea {
-      padding: 0.8rem;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      font-size: 1rem;
+      background: var(--bg-body);
+      color: var(--text-main);
+      padding: 1rem;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      outline: none;
     }
-    textarea { resize: vertical; min-height: 120px; }
+    input:focus, textarea:focus { border-color: var(--primary); }
 
-    /* Footer */
     footer {
-      background: #0f172a;
+      background: var(--nav-bg);
       color: #94a3b8;
+      padding: 3rem;
       text-align: center;
-      padding: 2rem 5%;
     }
 
     @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
       nav ul { display: none; }
-      .hero h1 { font-size: 2.2rem; }
     }
   </style>
 </head>
-<body>
+<body data-theme="light">
 
-  <!-- Navbar -->
   <nav>
     <div class="logo">نوفا تك</div>
     <ul>
       <li><a href="#home">الرئيسية</a></li>
       <li><a href="#services">خدماتنا</a></li>
-      <li><a href="#contact">تواصل</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">الوضع الليلي 🌙</button></li>
     </ul>
   </nav>
 
-  <!-- Hero -->
   <section class="hero" id="home">
     <h1>نبني مستقبل أعمالك التقني</h1>
-    <p>حلول برمجية واستضافة سحابية AWS مصممة خصيصاً لتنمو معك</p>
-    <a href="#contact" class="btn">ابدأ معنا</a>
+    <p>حلول برمجية واستضافة سحابية AWS فائقة السرعة مصممة خصيصاً لتفوق توقعاتك</p>
+    <a href="#contact" class="btn">ابدأ رحلتك الآن</a>
   </section>
 
-  <!-- Services -->
   <section class="section" id="services">
-    <h2>خدماتنا</h2>
+    <h2>ماذا نقدم؟</h2>
     <div class="cards">
       <div class="card">
-        <h3>تطوير مواقع</h3>
-        <p>مواقع سريعة، متجاوبة وآمنة باستخدام أحدث التقنيات React و Next.js</p>
+        <h3>تطوير واجهات مذهلة</h3>
+        <p>نحول أفكارك إلى واقع بصري مبهر باستخدام React و Next.js مع تجربة مستخدم لا تُنسى.</p>
       </div>
       <div class="card">
-        <h3>حلول AWS</h3>
-        <p>نشر وإدارة البنية التحتية السحابية، Lambda, EC2, S3 مع تحسين التكلفة.</p>
+        <h3>قوة السحاب AWS</h3>
+        <p>استمتع باستقرار بنسبة 99.9% مع خدمات الحوسبة السحابية المتقدمة وتحسين التكاليف.</p>
       </div>
       <div class="card">
-        <h3>أنظمة مخصصة</h3>
-        <p>نبني لك نظام إدارة خاص بشركتك — CRM, ERP أو لوحة تحكم داخلية.</p>
+        <h3>ذكاء الأعمال</h3>
+        <p>أنظمة CRM و ERP ذكية تساعدك على اتخاذ قراراتك بناءً على بيانات دقيقة ولحظية.</p>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
   <section class="section contact" id="contact">
     <h2>تواصل معنا</h2>
     <form onsubmit="handleSubmit(event)">
-      <input type="text" placeholder="الاسم" required>
-      <input type="email" placeholder="البريد الإلكتروني" required>
-      <textarea placeholder="رسالتك" required></textarea>
-      <button type="submit" class="btn">إرسال</button>
+      <input type="text" placeholder="الاسم الكامل" required>
+      <input type="email" placeholder="البريد الإلكتروني المهني" required>
+      <textarea placeholder="كيف يمكننا مساعدتك في مشروعك القادم؟" required></textarea>
+      <button type="submit" class="btn">إرسال الطلب</button>
     </form>
   </section>
 
   <footer>
-    <p>© 2026 نوفا تك. جميع الحقوق محفوظة.</p>
+    <p>© 2026 نوفا تك. هندسة رقمية بأعلى المعايير.</p>
   </footer>
 
   <script>
+    // وظيفة تبديل السمات
+    function toggleTheme() {
+      const body = document.body;
+      const btn = document.getElementById('themeBtn');
+      
+      if (body.getAttribute('data-theme') === 'light') {
+        body.setAttribute('data-theme', 'dark');
+        btn.innerHTML = 'الوضع النهاري ☀️';
+      } else {
+        body.setAttribute('data-theme', 'light');
+        btn.innerHTML = 'الوضع الليلي 🌙';
+      }
+    }
+
     function handleSubmit(e) {
       e.preventDefault();
-      alert('تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.');
+      alert('تم استلام رسالتك بنجاح! فريقنا التقني سيتواصل معك خلال 24 ساعة.');
       e.target.reset();
     }
   </script>
