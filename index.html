@@ -2,20 +2,28 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>موقعي الاحترافي</title>
+    <title>موقعي المطور بـ AWS</title>
     <style>
-        body { font-family: sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .card { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; }
-        h1 { color: #2c3e50; }
-        p { color: #7f8c8d; }
-        .status { color: #27ae60; font-weight: bold; }
+        body { font-family: sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; flex-direction: column; }
+        .card { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; max-width: 400px; }
+        img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 5px solid #3498db; margin-bottom: 1rem; }
+        h1 { color: #2c3e50; margin: 10px 0; }
+        .status { color: #27ae60; font-weight: bold; font-size: 0.9rem; }
+        .cloud-info { background: #e8f4fd; padding: 10px; border-radius: 8px; margin-top: 15px; font-size: 0.8rem; color: #2980b9; }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>تهانينا يا بطل! 🎉</h1>
-        <p>لقد نجحت في ربط GitHub مع AWS بنجاح.</p>
-        <p class="status">● نظام الرفع التلقائي يعمل الآن</p>
+        <!-- هذه الصورة تُجلب الآن من Amazon S3 مباشرة -->
+        <img src="https://kenda1.s3.eu-central-1.amazonaws.com/profile.jpg" alt="Profile Picture">
+        
+        <h1>تم الربط بنجاح! 🚀</h1>
+        <p class="status">● الموقع يعمل على EC2</p>
+        <p class="status">● الصورة تُعرض من S3</p>
+        
+        <div class="cloud-info">
+            هذه الصورة لا توجد على السيرفر، بل يتم استدعاؤها من مخزن AWS S3 العالمي.
+        </div>
     </div>
 </body>
 </html>
