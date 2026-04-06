@@ -315,7 +315,7 @@ async function loadWeather() {
         const temp = Math.round(data.current_weather.temperature);
         box.innerHTML = `<i class="fas fa-thermometer-half"></i> درجة الحرارة في الرياض: ${temp}° مئوية`;
     } catch (e) {
-        box.innerHTML = "الطقس غير متاح حالياً";
+        
     }
 }
 
